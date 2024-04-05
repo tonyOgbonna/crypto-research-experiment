@@ -31,11 +31,11 @@ From this LLM Chatbots prompting exercise, it was interesting to note that each 
 
 See the README file in each of the team folders for specific details on each team specifications.
 #### Team 1: Gemini
-Defined and designed using Google's Gemini Chatbot.
+Defined and designed using Google's Gemini Chatbot. i.e. Google's Gemini prompt engineered.
 #### Team 2: GPT-4
-Defined and designed using OpenAI's GPT-4 Chatbot.
+Defined and designed using OpenAI's GPT-4 Chatbot. i.e. OpenAI's GPT-4 prompt engineered.
 #### Team 3: GPT-3.5
-Defined and designed using OpenAI's ChatGPT 3.5.
+Defined and designed using OpenAI's ChatGPT 3.5. i.e. OpenAI's ChatGPT 3.5 prompt engineered.
 ### Frameworks
 Each team's agent swarm is implemented using four different open-source LLM applications development frameworks of interest that has agentic functionality, making a total of 12 implementations.
 
