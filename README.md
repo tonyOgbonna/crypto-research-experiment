@@ -1,7 +1,7 @@
 # crypto-research-experiment
 Crypto Research: A learning experiment on AI Agent Swarm implementation and AI frameworks evaluation.
 
-Under the hood this is an organised fairly extensive **experimentation, learning and mastery journey** into the worlds of AI development, AI autonomy, AI agent swarm, AI application development frameworks, Python programming, among other things.
+Under the hood this is an organised **experimentation, learning and mastery journey** into the worlds of AI development, AI autonomy, AI agent swarm, AI application development frameworks, Python programming, among other things.
 
 Hence there is not a certain destination to this project: the journey is the goal. The choice of Crypto Research here is arbitrary. Cryptocurrency just happens to be one of my many fields of curiosity and interest. And I just decided 'why not?'. Crypto Research is just the 'vehicle' with which I choose to embark on this journey with. Any other 'vehicle' would have served all the same.
 
@@ -28,6 +28,8 @@ Each team's overlord LLM was tasked with the following through direct prompting:
 From the responses to the above queries by each LLM, a distinct team to be tasked with the ultimate goal of this experiment will be created, comprising, but not limited to, the team's compositions, specifications and dynamics.
 
 From this LLM Chatbots prompting exercise, it was interesting to note that each LLM model approached the goal differently. I can't wait to compare and contract the intermediate and end results of each models unique approach.
+
+See the README file in each of the team folders for specific details on each team specifications.
 #### Team 1: Gemini
 Defined and designed using Google's Gemini Chatbot.
 #### Team 2: GPT-4
@@ -71,17 +73,17 @@ Cycles are important for agent-like behaviors, where you call an LLM in a loop, 
 - https://github.com/langchain-ai/langgraph/tree/main?ref=blog.langchain.dev
 ### Implementations
 #### Team 1: Gemini
-##### 1. Agent Swarm
-##### 2. AutoGen
-##### 3. CrewAI
-##### 4. LangChain / LangGraph
+- 1. Agent Swarm
+- 2. AutoGen
+- 3. CrewAI
+- 4. LangGraph
 #### Team 2: GPT-4
-##### 5. Agent Swarm
-##### 6. AutoGen
-##### 7. CrewAI
-##### 8. LangChain / LangGraph
+- 5. Agent Swarm
+- 6. AutoGen
+- 7. CrewAI
+- 8. LangGraph
 #### Team 3: GPT-3.5
-##### 9. Agent Swarm
-##### 10. AutoGen
-##### 11. CrewAI
-##### 12. LangChain / LangGraph
+- 9. Agent Swarm
+- 10. AutoGen
+- 11. CrewAI
+- 12. LangGraph
