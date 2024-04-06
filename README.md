@@ -17,7 +17,7 @@ There are three independent (AI) agencies (agent swarm teams), each tasked with 
 
 Apart from the common goal and using exactly the same prompts with the different Models, the teams compositions, specifications and dynamics where defined and designed differently by their respective LLM Models.
 
-Each team's overlord LLM was tasked with the following through direct prompting:
+Each team's overlord LLM was tasked with the following through Prompt Chaining or Chain-of-Prompt (CoP) techniques:
 1. **Daily Practices - Skills, Workflows & Resources:** As a crypto expert, actively involved in cryptocurrency trading, investing and staying ahead of your game, describe your daily practices in terms of skills, workflows & resources.
 2. **Report Template:** Assume that you run an agency that creates daily crypto reports for clients, what will your reporting template look like.
 3. **Key Questions for Customised Insights:** What key questions would you ask each of your client to enable you effectively research, analyze and create a customized report for each client?
