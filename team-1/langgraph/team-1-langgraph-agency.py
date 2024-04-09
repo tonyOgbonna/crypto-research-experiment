@@ -543,11 +543,26 @@ crypto_report_template = """# Crypto Market Activity Report - [Date]
 ## X. References
 - Include any relevant references or sources of the information or data used in the report.
 """
+
+suggested_resources = """
+## I. Market Overview
+Suggested Research Resources: Binance, Coinbase, TradingView, Coinigy, CoinMarketCap, CoinGecko, Messari
+## II. Technical Analysis
+Suggested Research Resources: Binance, Coinbase, TradingView, Coinigy, CoinMarketCap, CoinGecko, Messari
+## III. Fundamental Analysis
+Suggested Research Resources: CoinTelegraph, Decrypt, The Block, Glassnode, Santiment
+## IV. Investment Opportunities
+Suggested Research Resources: Messari, Delphi Digital, Coingecko Research, DappRadar, CoinHunters
+## V. Risk Management
+Suggested Research Resources: CoinTracker, Delta, Skew, The Block, Kelly Criterion
+## VI. Social Media Sentiment
+Suggested Research Resources: Brandwatch, Sprout Social, Reddit's r/CryptoCurrency, Social Mention, The TIE
+"""
 for s in super_graph.stream(
     {
         "messages": [
             HumanMessage(
-                content=f"Do a brief daily up-to-date (April 09, 2024) Cryptocurrency analysis research, and write a report according to the following template: {crypto_report_template}. Include relevant charts. It is important that you do not make stuff up. Use only factual information, for the date given.",
+                content=f"Do a brief daily up-to-date (April 10, 2024) Cryptocurrency analysis research, and write a report according to the following template: {crypto_report_template}. Here are some suggested resources: {suggested_resources}. Include relevant charts. It is important that you do not make stuff up. Use only factual information, for the date given.",
             )
         ],
     },

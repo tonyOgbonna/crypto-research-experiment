@@ -160,3 +160,7 @@ cython_debug/
 #.idea/
 
 team-1/agent-swarm/.agency-swarm/
+team-1/autogen/.autogen/
+team-1/autogen/OAI_CONFIG_LIST
+team-1/autogen/team-1-autogen-agency-poc.ipynb
+team-1/autogen/team-1-autogen-agency.py
