@@ -19,6 +19,8 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.tools import tool
 from langsmith import trace
+from langchain_community.chat_models import ChatOllama
+from langchain_experimental.llms.ollama_functions import OllamaFunctions
 
 tavily_tool = TavilySearchResults(max_results=5)
 
@@ -148,7 +150,8 @@ from langchain_openai import ChatOpenAI
 from langgraph.graph import END, StateGraph
 
 def create_agent(
-    llm: ChatOpenAI,
+    # llm: ChatOpenAI,
+    llm: OllamaFunctions(model="mistral"),
     tools: list,
     system_prompt: str,
 ) -> str:
@@ -239,6 +242,8 @@ class ResearchTeamState(TypedDict):
 
 # llm = ChatOpenAI(model="gpt-4-1106-preview")
 llm = ChatOpenAI(model="gpt-4-0125-preview")
+# llm = ChatOllama(model="llama2")
+# llm = OllamaFunctions(model="mistral")
 
 search_agent = create_agent(
     llm,
@@ -342,6 +347,8 @@ def prelude(state):
     }
 
 llm = ChatOpenAI(model="gpt-4-0125-preview")
+# llm = ChatOllama(model="llama2")
+# llm = OllamaFunctions(model="mistral")
 
 doc_writer_agent = create_agent(
     llm,
@@ -452,6 +459,8 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_openai.chat_models import ChatOpenAI
 
 llm = ChatOpenAI(model="gpt-4-0125-preview")
+# llm = ChatOllama(model="llama2")
+# llm = OllamaFunctions(model="mistral")
 
 supervisor_node = create_team_supervisor(
     llm,
@@ -538,7 +547,7 @@ for s in super_graph.stream(
     {
         "messages": [
             HumanMessage(
-                content=f"Do a brief daily up-to-date (April 05, 2024) Cryptocurrency analysis research, and write a report according to the following template: {crypto_report_template}. Include relevant charts. It is important that you do not make stuff up. Use only factual information, for the date given.",
+                content=f"Do a brief daily up-to-date (April 09, 2024) Cryptocurrency analysis research, and write a report according to the following template: {crypto_report_template}. Include relevant charts. It is important that you do not make stuff up. Use only factual information, for the date given.",
             )
         ],
     },
