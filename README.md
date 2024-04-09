@@ -25,7 +25,7 @@ Each team's overlord LLM was tasked with the following through Prompt Chaining o
 5. **Role's Resources, Tools and Workflows:** Define and describe each of the role's resources, tools and workflows necessary to execute on their tasks.
 6. **Team Workflow and dynamics:** Define and describe the overall team workflow and dynamics towards the ultimate goal of creating an excellent report for a client.
 
-From the responses to the above queries by each LLM, a distinct team to be tasked with the ultimate goal of this experiment will be created, comprising, but not limited to, the team's compositions, specifications and dynamics.
+From the responses to the above queries by each LLM, a distinct team to be tasked with the ultimate goal of this experiment will be created, comprising, but not limited to, the team's compositions, specifications and dynamics (Flow Engineering).
 
 From this LLM Chatbots prompting exercise, it was interesting to note that each LLM model approached the goal differently. I can't wait to compare and contract the intermediate and end results of each models unique approach.
 
@@ -72,6 +72,7 @@ Cycles are important for agent-like behaviors, where you call an LLM in a loop, 
 - https://blog.langchain.dev/langgraph-multi-agent-workflows/
 - https://github.com/langchain-ai/langgraph/tree/main?ref=blog.langchain.dev
 ### Implementations
+Each implementation will start very basic (perhaps very Prompt heavy), but will with time grow in complexity (towards tools, API and advanced methods, like function calling use ), bothering on the more advanced and SOTA features of these frameworks and field, as my knowledge and skills grow in sophistication.
 #### Team 1: Gemini
 - 1. Agent Swarm
 - 2. AutoGen
