@@ -19,8 +19,6 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.tools import tool
 from langsmith import trace
-from langchain_community.chat_models import ChatOllama
-from langchain_experimental.llms.ollama_functions import OllamaFunctions
 
 tavily_tool = TavilySearchResults(max_results=5)
 
@@ -140,17 +138,17 @@ def python_repl(
 These will simplify the graph compositional code at the end for us so it's easier to see what's going on."""
 from typing import Any, Callable, List, Optional, TypedDict, Union
 
-from langchain.agents import AgentExecutor, create_openai_functions_agent
+from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain.output_parsers.openai_functions import JsonOutputFunctionsParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import Runnable
 from langchain_core.tools import BaseTool
-from langchain_openai import ChatOpenAI
+from langchain_google_vertexai import ChatVertexAI
 
 from langgraph.graph import END, StateGraph
 
 def create_agent(
-    llm: ChatOpenAI,
+    llm: ChatVertexAI,
     tools: list,
     system_prompt: str,
 ) -> str:
@@ -169,7 +167,7 @@ def create_agent(
             MessagesPlaceholder(variable_name="agent_scratchpad"),
         ]
     )
-    agent = create_openai_functions_agent(llm, tools, prompt)
+    agent = create_tool_calling_agent(llm, tools, prompt)
     executor = AgentExecutor(agent=agent, tools=tools)
     return executor
 
@@ -177,7 +175,7 @@ def agent_node(state, agent, name):
     result = agent.invoke(state)
     return {"messages": [HumanMessage(content=result["output"], name=name)]}
 
-def create_team_supervisor(llm: ChatOpenAI, system_prompt, members) -> str:
+def create_team_supervisor(llm: ChatVertexAI, system_prompt, members) -> str:
     """An LLM-based router."""
     options = ["FINISH"] + members
     function_def = {
@@ -197,6 +195,25 @@ def create_team_supervisor(llm: ChatOpenAI, system_prompt, members) -> str:
             "required": ["next"],
         },
     }
+    from typing import List
+    from langchain_core.pydantic_v1 import BaseModel, Field, validator
+    # from pydantic import BaseModel, Field, validator
+
+    class RouteOptions(BaseModel):
+        next: str
+
+    class RouteSchema(BaseModel):
+        title: str = "routeSchema"
+        type: str = "object"
+        properties: RouteOptions
+        required: List[str] = Field(default=["next"])
+
+    class FunctionDefinition(BaseModel):
+        """An LLM-based router."""
+        name: str = "route"
+        description: str = "Select the next role."
+        parameters: RouteSchema
+
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
@@ -210,7 +227,7 @@ def create_team_supervisor(llm: ChatOpenAI, system_prompt, members) -> str:
     ).partial(options=str(options), team_members=", ".join(members))
     return (
         prompt
-        | llm.bind_functions(functions=[function_def], function_call="route")
+        | llm.bind_tools([FunctionDefinition])
         | JsonOutputFunctionsParser()
     )
 
@@ -224,7 +241,6 @@ import functools
 import operator
 
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
-from langchain_openai.chat_models import ChatOpenAI
 import functools
 
 # Research team graph state
@@ -238,11 +254,11 @@ class ResearchTeamState(TypedDict):
     # that will update this every time it makes a decision
     next: str
 
-
-# llm = ChatOpenAI(model="gpt-4-1106-preview")
-llm = ChatOpenAI(model="gpt-4-0125-preview")
-# llm = ChatOllama(model="llama2")
-# llm = OllamaFunctions(model="mistral")
+llm = ChatVertexAI(
+	model="gemini-pro", 
+	temperature=0, 
+	convert_system_message_to_human=True
+)
 
 search_agent = create_agent(
     llm,
@@ -345,9 +361,11 @@ def prelude(state):
         + "\n".join([f" - {f}" for f in written_files]),
     }
 
-llm = ChatOpenAI(model="gpt-4-0125-preview")
-# llm = ChatOllama(model="llama2")
-# llm = OllamaFunctions(model="mistral")
+llm = ChatVertexAI(
+	model="gemini-pro", 
+	temperature=0, 
+	convert_system_message_to_human=True
+)
 
 doc_writer_agent = create_agent(
     llm,
@@ -457,9 +475,11 @@ to define how this top-level state is shared between the different graphs."""
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_openai.chat_models import ChatOpenAI
 
-llm = ChatOpenAI(model="gpt-4-0125-preview")
-# llm = ChatOllama(model="llama2")
-# llm = OllamaFunctions(model="mistral")
+llm = ChatVertexAI(
+	model="gemini-pro", 
+	temperature=0, 
+	convert_system_message_to_human=True
+)
 
 supervisor_node = create_team_supervisor(
     llm,

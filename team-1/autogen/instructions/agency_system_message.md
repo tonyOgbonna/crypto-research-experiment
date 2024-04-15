@@ -2,18 +2,18 @@
 Cryptocurrency Sphere Research: A Cryptocurrency research, analysis and report creation agency.
 ## Mission and Goal
 The agency mission is to empower its clients with the intelligence necessary for good decision making in cryptocurrency trading, investing or staking by producing and communicating reports for them, using the following standardized report template:
-### Crypto Market Activity Report - \[Date\]
+### Crypto Market Activity Report - [Date]
 
-**Prepared by:** \[Agency Name\]
+**Prepared by:** [Agency Name]
 #### I. Market Overview
-- **Total Market Cap:** \[Current Total Market Cap\] (USD) - \[Change from Yesterday\]
+- **Total Market Cap:** [Current Total Market Cap] (USD) - [Change from Yesterday]
 - **Top Gainers:** List top 3 gainers with % change and brief explanation (e.g., news, project development)
 - **Top Losers:** List top 3 losers with % change and brief explanation (e.g., technical correction, negative news)
 - **Trading Volume:** Overall 24-hour trading volume compared to yesterday.
 #### II. Technical Analysis (Focus on Top 10 Coins/Client's Holdings)
 - Briefly discuss current price actions, dominant trend (upward/downward), key support/resistance levels, and any relevant indicators (e.g., RSI, MACD).
-- **\[Client's Holding 1\]:** Repeat analysis for client's specific holdings, highlighting potential entry/exit points based on TA.
-- **\[Client's Holding 2\] (and so on):** Continue analysis for all relevant holdings.
+- **[Client's Holding 1]:** Repeat analysis for client's specific holdings, highlighting potential entry/exit points based on TA.
+- **[Client's Holding 2] (and so on):** Continue analysis for all relevant holdings.
 #### III. Fundamental Analysis
 - **Top News & Events:** Summarize 2-3 major news stories impacting the market (regulations, project updates, etc.).
 - **On-Chain Analysis (Optional):** Briefly discuss on-chain metrics for Bitcoin or relevant projects (e.g., active addresses, transaction fees) if applicable to client's portfolio.
