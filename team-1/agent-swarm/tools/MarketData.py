@@ -13,6 +13,11 @@ including total market cap, top gainers and losers, and trading volume.
     api_base_url: str = Field(..., description="The CoinGecko API endpoint base URL")
     api_base_url = "https://api.coingecko.com/api/v3/"
 
+    # Other parameters
+    coin_ids: str = Field(..., description="Comma-separated list of coin identifiers, e.g., 'bitcoin,ethereum'")
+    vs_currency: str = Field(..., description="The currency identifier, e.g., 'usd'")
+    vs_currency = "usd"
+
     # Set rate limit and delay between requests
     rate_limit: int = Field(..., description="The rate limit for the CoinGecko API endpoints")
     rate_limit = 30  # 30 requests per minute for public API
@@ -110,5 +115,6 @@ including total market cap, top gainers and losers, and trading volume.
         total_market_cap = self.get_total_market_cap()
         top_gainers = self.get_top_gainers()
         top_losers = self.get_top_losers()
-        trading_volume = self.get_trading_volume()
-        return total_market_cap, top_gainers, top_losers, trading_volume
+        trading_volume = self.get_trading_volume(self.coin_ids)
+        # return total_market_cap, top_gainers, top_losers, trading_volume
+        return {'Total Market Cap': total_market_cap, 'Top Gainers': top_gainers, 'Top Losers': top_losers, 'Trading Volume': trading_volume}
